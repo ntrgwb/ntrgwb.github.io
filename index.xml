@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trang chủ on I have not failed, I just found 10,000 ways that won&#39;t work.</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content from I have not failed, I just found 10,000 ways that won&#39;t work.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    
+    <managingEditor>xxx@example.com (Ngo Truong)</managingEditor>
+    <webMaster>xxx@example.com (Ngo Truong)</webMaster>
+    
+    <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
+    
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>Wannagame - Writeup</title>
+      <link>http://localhost:1313/post/bai-viet-dau-tien/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/bai-viet-dau-tien/</guid>
+      <description>
+        <![CDATA[<h1>Wannagame - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image"></p>
+<p><img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
+<img src="https://github.com/user-attachments/assets/a25ea6d6-abed-46cd-995d-51f7014285cb" alt="image"></p>
+<p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm <code>checkAuth</code>, sau đó là thiết lập phiên hợp lệ <code>req.session.role = ADMIN = 0</code>.</p>
+<p><img src="https://github.com/user-attachments/assets/123bc75b-97c8-4d0c-ad54-1bafbdab1c78" alt="image"></p>
+<h2 id="bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-thi%e1%ba%bft-l%e1%ba%adp-phi%c3%aan-h%e1%bb%a3p-l%e1%bb%87-reqsessionvalid--true"></a>
+Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)
+</h2><p><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</p>
+<p><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</p>
+        
+        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
+      </description>
+      
+        <category>An toàn thông tin</category>
+      
+    </item>
+    
+  </channel>
+</rss>

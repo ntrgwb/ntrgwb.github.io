@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on I have not failed, I just found 10,000 ways that won&#39;t work.</title>
+    <link>http://localhost:1313/vi/categories/</link>
+    <description>Recent content from I have not failed, I just found 10,000 ways that won&#39;t work.</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    
+    <managingEditor>xxx@example.com (Ngo Truong)</managingEditor>
+    <webMaster>xxx@example.com (Ngo Truong)</webMaster>
+    
+    <copyright>Tất cả bài viết trên blog này được cấp phép theo thỏa thuận BY-NC-SA trừ khi có ghi chú khác. Vui lòng ghi nguồn khi sao chép!</copyright>
+    
+    
+    <atom:link href="http://localhost:1313/vi/categories/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+  </channel>
+</rss>
