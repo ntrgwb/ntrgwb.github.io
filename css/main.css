@@ -21,13 +21,13 @@
   --color-default: #9e9e9e;
   --color-border: var(--red-3);
   --color-link: var(--red-2);
-  --color-background: #1f1f1f;
-  --color-code-background: #2a2a2a;
-  --color-header-background: #2a2a2a;
-  --color-footer-background: #2a2a2a;
-  --color-mobile-nav-background: #2a2a2a;
-  --color-wrap: #2c2c2c;
-  --color-sticky: #2c2c2c;
+  --color-background: #111;
+  --color-code-background: #111;
+  --color-header-background: #111;
+  --color-footer-background: #111;
+  --color-mobile-nav-background: #111;
+  --color-wrap: #1111;
+  --color-sticky: #111;
   --color-h2-border: #33691e;
   --color-meta-shadow: rgba(102, 187, 106, 0.25);
   --color-hover-shadow: rgba(102, 187, 106, 0.1);
@@ -3096,7 +3096,7 @@ mjx-container::-webkit-scrollbar {
 }
 
 .icon-github {
-  color: #191717;
+  color: #33ae5a;
   transition: 1;
 }
 

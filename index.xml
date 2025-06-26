@@ -30,10 +30,7 @@
       <description>
         <![CDATA[<h1>Wannagame - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image"></p>
-<p><img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
-<img src="https://github.com/user-attachments/assets/a25ea6d6-abed-46cd-995d-51f7014285cb" alt="image"></p>
-<p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm <code>checkAuth</code>, sau đó là thiết lập phiên hợp lệ <code>req.session.role = ADMIN = 0</code>.</p>
+          <p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm <code>checkAuth</code>, sau đó là thiết lập phiên hợp lệ <code>req.session.role = ADMIN = 0</code>.</p>
 <p><img src="https://github.com/user-attachments/assets/123bc75b-97c8-4d0c-ad54-1bafbdab1c78" alt="image"></p>
 <h2 id="bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">
 <a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-thi%e1%ba%bft-l%e1%ba%adp-phi%c3%aan-h%e1%bb%a3p-l%e1%bb%87-reqsessionvalid--true"></a>
