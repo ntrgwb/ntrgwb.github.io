@@ -30,13 +30,115 @@
       <description>
         <![CDATA[<h1>Wannagame - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm <code>checkAuth</code>, sau đó là thiết lập phiên hợp lệ <code>req.session.role = ADMIN = 0</code>.</p>
+          <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image">
+<img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
+<img src="https://github.com/user-attachments/assets/a25ea6d6-abed-46cd-995d-51f7014285cb" alt="image"></p>
+<p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0</p>
 <p><img src="https://github.com/user-attachments/assets/123bc75b-97c8-4d0c-ad54-1bafbdab1c78" alt="image"></p>
 <h2 id="bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">
 <a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-thi%e1%ba%bft-l%e1%ba%adp-phi%c3%aan-h%e1%bb%a3p-l%e1%bb%87-reqsessionvalid--true"></a>
 Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)
-</h2><p><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</p>
-<p><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</p>
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</li>
+<li><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</li>
+<li><strong>Giải pháp</strong>:
+<ul>
+<li>Quy tắc <code>path_beg /register</code> không phân biệt hoa thường trong thử thách này.</li>
+<li>Sử dụng <code>POST /Register</code> (chữ &lsquo;R&rsquo; in hoa) để vượt qua quy tắc.
+Gửi yêu cầu <code>POST /Register</code> để đăng ký và nhận cookie phiên với <code>req.session.valid = true</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="bước-2-bypassing-quy-tắc-body-của-haproxy">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-2-bypassing-quy-t%e1%ba%afc-body-c%e1%bb%a7a-haproxy"></a>
+Bước 2: Bypassing quy tắc body của HAProxy
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Vượt qua quy tắc <code>http-request deny if { req.body -m sub dHJ1ZQ }</code> và thỏa mãn logic ứng dụng <code>if (atob(req.body.confirm) === &quot;true&quot;)</code>.</li>
+<li><strong>Thách thức</strong>:
+<ul>
+<li>HAProxy chặn các yêu cầu có chuỗi <code>dHJ1ZQ</code> (base64 của &ldquo;true&rdquo;) trong phần thân.</li>
+<li>Ứng dụng yêu cầu <code>req.body.confirm</code> phải giải mã base64 thành <code>&quot;true&quot;</code>.</li>
+</ul>
+</li>
+<li><strong>Giải pháp</strong>:
+<ul>
+<li>Sử dụng ký tự xuống dòng (<code>%0A</code>) để ngắt chuỗi <code>dHJ1ZQ</code>.</li>
+<li>Payload: <code>confirm=dHJ1%0AZQ==</code>.
+<ul>
+<li>HAProxy không phát hiện <code>dHJ1ZQ</code> do bị ngắt.</li>
+<li>Ứng dụng giải mã <code>atob(&quot;dHJ1\nZQ==&quot;)</code> thành <code>&quot;true&quot;</code>.
+Gửi yêu cầu với payload <code>confirm=dHJ1%0AZQ==</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="bước-3-đặt-reqsessionrole--0">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-3-%c4%91%e1%ba%b7t-reqsessionrole--0"></a>
+Bước 3: Đặt <code>req.session.role = 0</code>
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.role = 0</code>.</li>
+<li><strong>Thách thức</strong>:
+<ul>
+<li>HAProxy chỉ cho phép header <code>role = 1</code> với quy tắc <code>http-request deny if { hdr_val(role) lt 1 } || { hdr_val(role) gt 1 }</code>.</li>
+<li>Ứng dụng yêu cầu <code>Number(req.headers.role) === 0</code>.</li>
+</ul>
+</li>
+<li><strong>Giải pháp</strong>:
+<ul>
+<li>Sử dụng header <code>role: 1e-10000000000</code>.
+<ul>
+<li>HAProxy không từ chối giá trị này.</li>
+<li>Express.js chuyển <code>Number(&quot;1e-10000000000&quot;)</code> thành <code>0</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Hành động</strong>: Gửi yêu cầu <code>HEAD /admin</code> với header <code>role: 1e-10000000000</code>.</li>
+</ul>
+<h2 id="bước-4-truy-cập--admin-để-lấy-flag">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-truy-c%e1%ba%adp--admin-%c4%91%e1%bb%83-l%e1%ba%a5y-flag"></a>
+Bước 4: Truy cập  <code>/admin</code> để lấy flag
+</h2><p>Lấy flag từ  <code>/admin</code>.</p>
+        
+        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
+      </description>
+      
+        <category>An toàn thông tin</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Picoctf - Writeup</title>
+      <link>http://localhost:1313/post/picoctf/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/picoctf/</guid>
+      <description>
+        <![CDATA[<h1>Picoctf - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <h1 id="sqli">
+<a class="header-anchor" href="#sqli"></a>
+SQLI
+</h1><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
+<p>Lấy các bảng bằng payload như sau</p>
+<blockquote>
+<p>a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -</p></blockquote>
+<p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
+<p>Kiểm tra bảng more_table</p>
+<blockquote>
+<p>a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -</p></blockquote>
+<p>KIểm tra cột flag trong bảng more_table</p>
+<blockquote>
+<p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
+<p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
+<h1 id="matchtheregex">
+<a class="header-anchor" href="#matchtheregex"></a>
+MatchTheRegex
+</h1><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image">
+.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
         
         <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>

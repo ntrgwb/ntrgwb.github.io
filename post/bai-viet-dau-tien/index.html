@@ -194,7 +194,7 @@ This article does not have a corresponding language version
     <li><a href="#bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)</a></li>
     <li><a href="#bước-2-bypassing-quy-tắc-body-của-haproxy">Bước 2: Bypassing quy tắc body của HAProxy</a></li>
     <li><a href="#bước-3-đặt-reqsessionrole--0">Bước 3: Đặt <code>req.session.role = 0</code></a></li>
-    <li><a href="#bước-4-truy-cập-admin-để-lấy-flag">Bước 4: Truy cập <code>/admin</code> để lấy flag</a></li>
+    <li><a href="#bước-4-truy-cập--admin-để-lấy-flag">Bước 4: Truy cập  <code>/admin</code> để lấy flag</a></li>
   </ul>
 </nav>
   </div>
@@ -311,50 +311,61 @@ This article does not have a corresponding language version
       >AN TOÀN THÔNG TIN</a
     ></div>
 </div>
-    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm <code>checkAuth</code>, sau đó là thiết lập phiên hợp lệ <code>req.session.role = ADMIN = 0</code>.</p>
+    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image">
+<img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
+<img src="https://github.com/user-attachments/assets/a25ea6d6-abed-46cd-995d-51f7014285cb" alt="image"></p>
+<p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0</p>
 <p><img src="https://github.com/user-attachments/assets/123bc75b-97c8-4d0c-ad54-1bafbdab1c78" alt="image"></p>
 <h2 id="bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">
 <a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-thi%e1%ba%bft-l%e1%ba%adp-phi%c3%aan-h%e1%bb%a3p-l%e1%bb%87-reqsessionvalid--true"></a>
 Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)
-</h2><p><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</p>
-<p><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</p>
-<p><strong>Giải pháp</strong>:</p>
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</li>
+<li><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</li>
+<li><strong>Giải pháp</strong>:
 <ul>
 <li>Quy tắc <code>path_beg /register</code> không phân biệt hoa thường trong thử thách này.</li>
-<li>Sử dụng <code>POST /Register</code> (chữ &lsquo;R&rsquo; in hoa) để vượt qua quy tắc.</li>
-<li>Gửi yêu cầu <code>POST /Register</code> để đăng ký và nhận cookie phiên với <code>req.session.valid = true</code>.</li>
+<li>Sử dụng <code>POST /Register</code> (chữ &lsquo;R&rsquo; in hoa) để vượt qua quy tắc.
+Gửi yêu cầu <code>POST /Register</code> để đăng ký và nhận cookie phiên với <code>req.session.valid = true</code>.</li>
 </ul>
-<hr>
+</li>
+</ul>
 <h2 id="bước-2-bypassing-quy-tắc-body-của-haproxy">
 <a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-2-bypassing-quy-t%e1%ba%afc-body-c%e1%bb%a7a-haproxy"></a>
 Bước 2: Bypassing quy tắc body của HAProxy
-</h2><p><strong>Mục tiêu</strong>: Vượt qua quy tắc <code>http-request deny if { req.body -m sub dHJ1ZQ }</code> và thỏa mãn logic ứng dụng <code>if (atob(req.body.confirm) === &quot;true&quot;)</code>.</p>
-<p><strong>Thách thức</strong>:</p>
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Vượt qua quy tắc <code>http-request deny if { req.body -m sub dHJ1ZQ }</code> và thỏa mãn logic ứng dụng <code>if (atob(req.body.confirm) === &quot;true&quot;)</code>.</li>
+<li><strong>Thách thức</strong>:
 <ul>
 <li>HAProxy chặn các yêu cầu có chuỗi <code>dHJ1ZQ</code> (base64 của &ldquo;true&rdquo;) trong phần thân.</li>
 <li>Ứng dụng yêu cầu <code>req.body.confirm</code> phải giải mã base64 thành <code>&quot;true&quot;</code>.</li>
 </ul>
-<p><strong>Giải pháp</strong>:</p>
+</li>
+<li><strong>Giải pháp</strong>:
 <ul>
 <li>Sử dụng ký tự xuống dòng (<code>%0A</code>) để ngắt chuỗi <code>dHJ1ZQ</code>.</li>
 <li>Payload: <code>confirm=dHJ1%0AZQ==</code>.
 <ul>
 <li>HAProxy không phát hiện <code>dHJ1ZQ</code> do bị ngắt.</li>
-<li>Ứng dụng giải mã <code>atob(&quot;dHJ1\nZQ==&quot;)</code> thành <code>&quot;true&quot;</code>.</li>
+<li>Ứng dụng giải mã <code>atob(&quot;dHJ1\nZQ==&quot;)</code> thành <code>&quot;true&quot;</code>.
+Gửi yêu cầu với payload <code>confirm=dHJ1%0AZQ==</code>.</li>
 </ul>
 </li>
 </ul>
-<hr>
+</li>
+</ul>
 <h2 id="bước-3-đặt-reqsessionrole--0">
 <a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-3-%c4%91%e1%ba%b7t-reqsessionrole--0"></a>
 Bước 3: Đặt <code>req.session.role = 0</code>
-</h2><p><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.role = 0</code>.</p>
-<p><strong>Thách thức</strong>:</p>
+</h2><ul>
+<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.role = 0</code>.</li>
+<li><strong>Thách thức</strong>:
 <ul>
 <li>HAProxy chỉ cho phép header <code>role = 1</code> với quy tắc <code>http-request deny if { hdr_val(role) lt 1 } || { hdr_val(role) gt 1 }</code>.</li>
 <li>Ứng dụng yêu cầu <code>Number(req.headers.role) === 0</code>.</li>
 </ul>
-<p><strong>Giải pháp</strong>:</p>
+</li>
+<li><strong>Giải pháp</strong>:
 <ul>
 <li>Sử dụng header <code>role: 1e-10000000000</code>.
 <ul>
@@ -363,18 +374,25 @@ Bước 3: Đặt <code>req.session.role = 0</code>
 </ul>
 </li>
 </ul>
-<p><strong>Hành động</strong>: Gửi yêu cầu <code>HEAD /admin</code> với header <code>role: 1e-10000000000</code>.</p>
-<hr>
-<h2 id="bước-4-truy-cập-admin-để-lấy-flag">
-<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-truy-c%e1%ba%adp-admin-%c4%91%e1%bb%83-l%e1%ba%a5y-flag"></a>
-Bước 4: Truy cập <code>/admin</code> để lấy flag
-</h2><p>Lấy flag từ <code>/admin</code>.</p>
-<p><strong>Giải pháp</strong>:</p>
+</li>
+<li><strong>Hành động</strong>: Gửi yêu cầu <code>HEAD /admin</code> với header <code>role: 1e-10000000000</code>.</li>
+</ul>
+<h2 id="bước-4-truy-cập--admin-để-lấy-flag">
+<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-truy-c%e1%ba%adp--admin-%c4%91%e1%bb%83-l%e1%ba%a5y-flag"></a>
+Bước 4: Truy cập  <code>/admin</code> để lấy flag
+</h2><p>Lấy flag từ  <code>/admin</code>.</p>
+<ul>
+<li><strong>Giải pháp</strong>:
 <ul>
 <li>Sử dụng cookie phiên từ bước 1.</li>
 <li>Gửi yêu cầu <code>POST /admin</code>.</li>
 </ul>
-<p><strong>Kết quả</strong>: Ứng dụng trả về flag.</p>
+</li>
+<li><strong>Kết quả</strong>: Ứng dụng trả về flag.
+<img src="https://github.com/user-attachments/assets/d8757084-5c73-404c-b9c4-864f6ea57a39" alt="Screenshot 2025-05-11 144928">
+<img src="https://github.com/user-attachments/assets/37b66916-b85a-4df0-aca8-7015705ade59" alt="Screenshot 2025-05-11 145717">
+<img src="https://github.com/user-attachments/assets/98368465-6492-4a94-85c6-72a7e28cad66" alt="Screenshot 2025-05-11 145701"></li>
+</ul>
 </div>
     <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
       <a
@@ -429,7 +447,7 @@ Bước 4: Truy cập <code>/admin</code> để lấy flag
     <li><a href="#bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)</a></li>
     <li><a href="#bước-2-bypassing-quy-tắc-body-của-haproxy">Bước 2: Bypassing quy tắc body của HAProxy</a></li>
     <li><a href="#bước-3-đặt-reqsessionrole--0">Bước 3: Đặt <code>req.session.role = 0</code></a></li>
-    <li><a href="#bước-4-truy-cập-admin-để-lấy-flag">Bước 4: Truy cập <code>/admin</code> để lấy flag</a></li>
+    <li><a href="#bước-4-truy-cập--admin-để-lấy-flag">Bước 4: Truy cập  <code>/admin</code> để lấy flag</a></li>
   </ul>
 </nav>
   </div>
@@ -548,7 +566,7 @@ Bước 4: Truy cập <code>/admin</code> để lấy flag
           author: "Ngo Truong",
           title: "Wannagame - Writeup",
           url: "http:\/\/localhost:1313\/post\/bai-viet-dau-tien\/",
-          description: "Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAuth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0.\nBước 1: Thiết lập phiên hợp lệ (req.session.valid = true)\rMục tiêu: Gửi yêu cầu để đặt req.session.valid = true, giúp vượt qua hàm checkAuth(). …",
+          description: " Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0\nBước 1: Thiết lập phiên hợp lệ (req.session.valid = true)\rMục tiêu: Gửi yêu cầu để đặt req.session.valid = true, giúp vượt qua hàm checkAuth(). …",
           cover: "http:\/\/localhost:1313\/images\/wn.png",
         };
       </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const pswp = () => {
