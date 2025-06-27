@@ -22,13 +22,13 @@
     
 
     <item>
-      <title>Wannagame - Writeup</title>
+      <title>Wannagame</title>
       <link>http://localhost:1313/post/bai-viet-dau-tien/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
       <author>xxx@example.com (Ngo Truong)</author>
       <guid>http://localhost:1313/post/bai-viet-dau-tien/</guid>
       <description>
-        <![CDATA[<h1>Wannagame - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        <![CDATA[<h1>Wannagame</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
           <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image">
 <img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
@@ -104,46 +104,54 @@ Bước 4: Truy cập  <code>/admin</code> để lấy flag
         <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>
       
-        <category>An toàn thông tin</category>
+        <category>WRITEUP</category>
       
     </item>
     
     
 
     <item>
-      <title>Picoctf - Writeup</title>
+      <title>Picoctf</title>
       <link>http://localhost:1313/post/picoctf/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
       <author>xxx@example.com (Ngo Truong)</author>
       <guid>http://localhost:1313/post/picoctf/</guid>
       <description>
-        <![CDATA[<h1>Picoctf - Writeup</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        <![CDATA[<h1>Picoctf</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <h1 id="sqli">
+          <h2 id="sqli">
 <a class="header-anchor" href="#sqli"></a>
 SQLI
-</h1><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
-<p>Lấy các bảng bằng payload như sau</p>
+</h2><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
+<ul>
+<li>Lấy các bảng bằng payload như sau</li>
+</ul>
 <blockquote>
 <p>a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
-<p>Kiểm tra bảng more_table</p>
+<ul>
+<li>Kiểm tra bảng more_table</li>
+</ul>
 <blockquote>
 <p>a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -</p></blockquote>
-<p>KIểm tra cột flag trong bảng more_table</p>
+<ul>
+<li>KIểm tra cột flag trong bảng more_table</li>
+</ul>
 <blockquote>
 <p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
-<h1 id="matchtheregex">
+<h2 id="matchtheregex">
 <a class="header-anchor" href="#matchtheregex"></a>
 MatchTheRegex
-</h1><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image">
-.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
+</h2><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
+<ul>
+<li>
+<p>.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
         
         <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>
       
-        <category>An toàn thông tin</category>
+        <category>WRITEUP</category>
       
     </item>
     

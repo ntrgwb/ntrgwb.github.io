@@ -21,8 +21,8 @@
   --color-default: #9e9e9e;
   --color-border: var(--red-3);
   --color-link: var(--red-2);
-  --color-background: #000;
-  --color-code-background: #000;
+  --color-background: #131313;
+  --color-code-background: #4e4848;
   --color-header-background: #000;
   --color-footer-background: #000;
   --color-mobile-nav-background: #000;

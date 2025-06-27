@@ -119,10 +119,10 @@ Bước 4: Truy cập  <code>/admin</code> để lấy flag
       <description>
         <![CDATA[<h1>Picoctf</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <h1 id="sqli">
+          <h2 id="sqli">
 <a class="header-anchor" href="#sqli"></a>
 SQLI
-</h1><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
+</h2><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
 <ul>
 <li>Lấy các bảng bằng payload như sau</li>
 </ul>
@@ -140,10 +140,10 @@ SQLI
 <blockquote>
 <p>a&rsquo; union select flag,2,3 from more_table&ndash; -</p></blockquote>
 <p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
-<h1 id="matchtheregex">
+<h2 id="matchtheregex">
 <a class="header-anchor" href="#matchtheregex"></a>
 MatchTheRegex
-</h1><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
+</h2><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
 <ul>
 <li>
 <p>.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
