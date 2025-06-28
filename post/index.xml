@@ -111,13 +111,13 @@ Bước 4: Truy cập  <code>/admin</code> để lấy flag
     
 
     <item>
-      <title>Picoctf</title>
+      <title>Pico CTF</title>
       <link>http://localhost:1313/post/picoctf/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
       <author>xxx@example.com (Ngo Truong)</author>
       <guid>http://localhost:1313/post/picoctf/</guid>
       <description>
-        <![CDATA[<h1>Picoctf</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        <![CDATA[<h1>Pico CTF</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
           <h2 id="sqli">
 <a class="header-anchor" href="#sqli"></a>
@@ -165,18 +165,20 @@ MatchTheRegex
     
 
     <item>
-      <title></title>
+      <title>Google CTF 2025</title>
       <link>http://localhost:1313/post/google_ctf/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
       <author>xxx@example.com (Ngo Truong)</author>
       <guid>http://localhost:1313/post/google_ctf/</guid>
       <description>
-        <![CDATA[<h1></h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        <![CDATA[<h1>Google CTF 2025</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
           
         
-        <hr><p>Published on 0001-01-01 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 0001-01-01</p>]]>
+        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>
+      
+        <category>WRITEUP</category>
       
     </item>
     
