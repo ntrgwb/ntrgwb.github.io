@@ -30,76 +30,60 @@
       <description>
         <![CDATA[<h1>Wannagame</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image">
-<img src="https://github.com/user-attachments/assets/92075798-34ff-46c9-8eb6-ca9590db2586" alt="image">
-<img src="https://github.com/user-attachments/assets/a25ea6d6-abed-46cd-995d-51f7014285cb" alt="image"></p>
-<p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0</p>
-<p><img src="https://github.com/user-attachments/assets/123bc75b-97c8-4d0c-ad54-1bafbdab1c78" alt="image"></p>
-<h2 id="bước-1-thiết-lập-phiên-hợp-lệ-reqsessionvalid--true">
-<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-1-thi%e1%ba%bft-l%e1%ba%adp-phi%c3%aan-h%e1%bb%a3p-l%e1%bb%87-reqsessionvalid--true"></a>
-Bước 1: Thiết lập phiên hợp lệ (<code>req.session.valid = true</code>)
-</h2><ul>
-<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.valid = true</code>, giúp vượt qua hàm <code>checkAuth()</code>.</li>
-<li><strong>Thách thức</strong>: HAProxy chặn các yêu cầu tới đường dẫn bắt đầu bằng <code>/register</code> với quy tắc <code>http-request deny if { path_beg /register }</code>.</li>
-<li><strong>Giải pháp</strong>:
-<ul>
-<li>Quy tắc <code>path_beg /register</code> không phân biệt hoa thường trong thử thách này.</li>
-<li>Sử dụng <code>POST /Register</code> (chữ &lsquo;R&rsquo; in hoa) để vượt qua quy tắc.
-Gửi yêu cầu <code>POST /Register</code> để đăng ký và nhận cookie phiên với <code>req.session.valid = true</code>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="bước-2-bypassing-quy-tắc-body-của-haproxy">
-<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-2-bypassing-quy-t%e1%ba%afc-body-c%e1%bb%a7a-haproxy"></a>
-Bước 2: Bypassing quy tắc body của HAProxy
-</h2><ul>
-<li><strong>Mục tiêu</strong>: Vượt qua quy tắc <code>http-request deny if { req.body -m sub dHJ1ZQ }</code> và thỏa mãn logic ứng dụng <code>if (atob(req.body.confirm) === &quot;true&quot;)</code>.</li>
-<li><strong>Thách thức</strong>:
-<ul>
-<li>HAProxy chặn các yêu cầu có chuỗi <code>dHJ1ZQ</code> (base64 của &ldquo;true&rdquo;) trong phần thân.</li>
-<li>Ứng dụng yêu cầu <code>req.body.confirm</code> phải giải mã base64 thành <code>&quot;true&quot;</code>.</li>
-</ul>
-</li>
-<li><strong>Giải pháp</strong>:
-<ul>
-<li>Sử dụng ký tự xuống dòng (<code>%0A</code>) để ngắt chuỗi <code>dHJ1ZQ</code>.</li>
-<li>Payload: <code>confirm=dHJ1%0AZQ==</code>.
-<ul>
-<li>HAProxy không phát hiện <code>dHJ1ZQ</code> do bị ngắt.</li>
-<li>Ứng dụng giải mã <code>atob(&quot;dHJ1\nZQ==&quot;)</code> thành <code>&quot;true&quot;</code>.
-Gửi yêu cầu với payload <code>confirm=dHJ1%0AZQ==</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="bước-3-đặt-reqsessionrole--0">
-<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-3-%c4%91%e1%ba%b7t-reqsessionrole--0"></a>
-Bước 3: Đặt <code>req.session.role = 0</code>
-</h2><ul>
-<li><strong>Mục tiêu</strong>: Gửi yêu cầu để đặt <code>req.session.role = 0</code>.</li>
-<li><strong>Thách thức</strong>:
-<ul>
-<li>HAProxy chỉ cho phép header <code>role = 1</code> với quy tắc <code>http-request deny if { hdr_val(role) lt 1 } || { hdr_val(role) gt 1 }</code>.</li>
-<li>Ứng dụng yêu cầu <code>Number(req.headers.role) === 0</code>.</li>
-</ul>
-</li>
-<li><strong>Giải pháp</strong>:
-<ul>
-<li>Sử dụng header <code>role: 1e-10000000000</code>.
-<ul>
-<li>HAProxy không từ chối giá trị này.</li>
-<li>Express.js chuyển <code>Number(&quot;1e-10000000000&quot;)</code> thành <code>0</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Hành động</strong>: Gửi yêu cầu <code>HEAD /admin</code> với header <code>role: 1e-10000000000</code>.</li>
-</ul>
-<h2 id="bước-4-truy-cập--admin-để-lấy-flag">
-<a class="header-anchor" href="#b%c6%b0%e1%bb%9bc-4-truy-c%e1%ba%adp--admin-%c4%91%e1%bb%83-l%e1%ba%a5y-flag"></a>
-Bước 4: Truy cập  <code>/admin</code> để lấy flag
-</h2><p>Lấy flag từ  <code>/admin</code>.</p>
+          <p><img src="https://github.com/user-attachments/assets/59800047-232d-4a56-b988-d675c31e97f5" alt="image"></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">router</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">Router</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ADMIN</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">USER</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;W1{test_flag}&#39;</span>;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/admin&#34;</span>, <span style="color:#a6e22e">checkAuth</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">role</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">ADMIN</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">401</span>).<span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#34;error&#34;</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Unauthorized&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;You are not allowed to view this page.&#34;</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Welcome back, admin! Here is your flag: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">FLAG</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0</p>
         
         <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>

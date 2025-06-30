@@ -15,7 +15,7 @@
   name="description"
   content="ntrgwb "
 /><script>
-  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"LanguageName\":\"English\",\"LanguageCode\":\"\",\"Title\":\"\",\"LanguageDirection\":\"\",\"Weight\":1,\"Disabled\":false},{\"Lang\":\"vi\",\"LanguageName\":\"Tiếng Việt\",\"LanguageCode\":\"\",\"Title\":\"\",\"LanguageDirection\":\"\",\"Weight\":1,\"Disabled\":false}],\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"enable\":true,\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"LanguageName\":\"English\",\"LanguageCode\":\"\",\"Title\":\"\",\"LanguageDirection\":\"\",\"Weight\":1,\"Disabled\":false},{\"Lang\":\"vi\",\"LanguageName\":\"Tiếng Việt\",\"LanguageCode\":\"\",\"Title\":\"\",\"LanguageDirection\":\"\",\"Weight\":1,\"Disabled\":false}],\"icon_font\":\"4552607_0khxww3tj3q9\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
   
 </script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -338,7 +338,7 @@ This article does not have a corresponding language version
       </div>
     </div>
   </div></div></aside>
-<section id="main"><div class="post-wrapper">
+<section id="main"><div class="post-categories-wrapper" data-aos="fade-up"></div><div class="post-wrapper">
   <div
     class="
       post-wrap-left
@@ -375,7 +375,11 @@ This article does not have a corresponding language version
         >
       </div>
       <h2 class="post-title">Google CTF 2025</h2>
-      <article class="post-article"></article>
+      <article class="post-article">
+
+
+
+</article>
     </div>
   </div>
 </div>
@@ -408,16 +412,16 @@ This article does not have a corresponding language version
         >
         <span
           ><span class="icon-pencil"></span
-          >335 words</span
+          >460 words</span
         >
         <span
           ><span class="icon-clock"></span
-          >2 mins</span
+          >3 mins</span
         >
       </div>
       <h2 class="post-title">Wannagame</h2>
-      <article class="post-article"> Đầu tiên đọc src em thấy để lấy được flag bước đầu tiên là phải vượt qua được hàm checkAUth, sau đó là thiết lập phiên hợp lệ req.session.role = ADMIN = 0
-Bước 1: Thiết lập phiên hợp lệ (req.session.valid = true)Mục tiêu: Gửi yêu cầu để đặt req.session.valid = true, giúp vượt qua hàm checkAuth(). …</article>
+      <article class="post-article">
+1 2 3 4 5 6 7 const express = require(&#34;express&#34;); const router = express.Router(); const ADMIN = 0; const USER = 1; const FLAG = process.env.FLAG || &#39;W1{test_flag}&#39;; 1 2 3 4 5 6 7 8 9 10 11 12 13 router.post(&#34;/admin&#34;, checkAuth, (req, res) =&gt; { if (req.session.role !== …</article>
     </div>
   </div>
 </div>
