@@ -8,7 +8,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  Google CTF 2025 | Ngo Truong
+   | Ngo Truong
 </title>
 <meta
   name="description"
@@ -37,7 +37,7 @@
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.css" />
 <meta property="og:type" content="website" />
-  <meta property="og:title" content="Google CTF 2025 | Ngo Truong" />
+  <meta property="og:title" content=" | Ngo Truong" />
   <meta
     property="og:description"
     content="ntrgwb "
@@ -49,12 +49,12 @@
   />
   <meta
     property="og:image"
-    content="/images/cover.jpg"
+    content="/"
   />
   <meta property="article:author" content="Ngo Truong" />
-  <meta property="article:published_time" content="2025-06-25T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2025-06-25T00:00:00&#43;00:00" /><meta property="article:tag" content="ctfweb" /><meta name="twitter:card" content="summary" />
-  <meta name="twitter:image" content="/images/cover.jpg" />
+  <meta property="article:published_time" content="0001-01-01T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="0001-01-01T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" />
 <link
     rel="preload"
@@ -177,10 +177,9 @@ This article does not have a corresponding language version
         });
       </script>
     </nav></div>
-<header id="header"><picture></picture>
-    <img  fetchpriority="high" src="/images/cover.jpg" alt="Google CTF 2025"><div id="header-outer">
+<header id="header"><picture></picture><img  fetchpriority="high" src="/images/0x0.webp" alt=""><div id="header-outer">
     <div id="header-title"><a href="/" id="logo">
-            <h1 data-aos="slide-up">Google CTF 2025</h1>
+            <h1 data-aos="slide-up">I have not failed, I just found 10,000 ways that won&#39;t work.</h1>
           </a><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
@@ -284,74 +283,29 @@ This article does not have a corresponding language version
     class="article-date-link"
     data-aos="zoom-in"
   >
-    <time datetime="2025-06-25 00:00:00 &#43;0000 UTC" itemprop="datePublished"
-      >2025-06-25</time
+    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >0001-01-01</time
     >
     <time style="display: none;" id="post-update-time"
-      >2025-06-25</time
+      >0001-01-01</time
     >
   </span>
 </div>
-<div class="article-category"><a
-      class="article-category-link"
-      href="/categories/writeup"
-      data-aos="zoom-in"
-      >WRITEUP</a
-    ></div>
+<div class="article-category"></div>
 </div>
-    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func_0x1ac</span>(reg7,reg8):
-</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0xa8</span>:
-</span></span><span style="display:flex;"><span>        reg4 <span style="color:#f92672">=</span> mem[<span style="color:#ae81ff">0xa0</span> <span style="color:#f92672">+</span> i]
-</span></span><span style="display:flex;"><span>        s <span style="color:#f92672">+=</span> reg4
-</span></span><span style="display:flex;"><span>        i<span style="color:#f92672">+=</span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> s<span style="color:#f92672">==</span><span style="color:#ae81ff">0x7f8</span> <span style="color:#f92672">and</span> reg7<span style="color:#f92672">==</span><span style="color:#ae81ff">7</span> <span style="color:#f92672">and</span> reg8<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div>
-    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
-      <a
-        class="article-tag-list-link"
-        href="/tags/ctf"
-        rel="tag"
-        >CTF</a
-      >
-    </li><li class="article-tag-list-item" data-aos="zoom-in">
-      <a
-        class="article-tag-list-link"
-        href="/tags/web"
-        rel="tag"
-        >WEB</a
-      >
-    </li></ul>
+    <div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"></div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"></ul>
 </footer>
   </div><nav
     id="article-nav"
     data-aos="fade-up"
-  ><div class="article-nav-link-wrap article-nav-link-left"><img
+  ><div class="article-nav-link-wrap article-nav-link-right"><img
             data-src="/images/nahamcon.png"
             data-sizes="auto"
             alt="Nahamcon 2025"
             class="lazyload"
           /><a href="/post/nahamcon_ctf_2025/"></a>
-        <div class="article-nav-caption">Newer</div>
+        <div class="article-nav-caption">Older</div>
         <h3 class="article-nav-title">Nahamcon 2025</h3>
       </div></nav></article></section>
         </div><footer id="footer">
@@ -366,10 +320,10 @@ This article does not have a corresponding language version
           >ntrg0wb</a>
       </div><div>
         <span class="icon-brush"
-          >&nbsp;678</span
+          >&nbsp;637</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;00:04</span>
+        <span class="icon-coffee">&nbsp;00:03</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -501,10 +455,10 @@ This article does not have a corresponding language version
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "Ngo Truong",
-          title: "Google CTF 2025",
+          title: "",
           url: "http:\/\/localhost:1313\/post\/google_ctf\/",
-          description: " 1 2 3 4 5 6 7 8 9 10 def func_0x1ac(reg7,reg8): i = 0 s = 0 while i \u0026lt; 0xa8: reg4 = mem[0xa0 \u002b i] s \u002b= reg4 i\u002b=1 if s==0x7f8 and reg7==7 and reg8==2: return 1 return 0 ",
-          cover: "http:\/\/localhost:1313\/images\/cover.jpg",
+          description: "",
+          cover: "http:\/\/localhost:1313\/images\/0x0.webp",
         };
       </script><script src="/js/insert_highlight.js" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const pswp = () => {
           if (_$$('.article-entry a.article-gallery-item').length > 0) {
