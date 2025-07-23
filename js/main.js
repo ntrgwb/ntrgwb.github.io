@@ -67,28 +67,17 @@
         window._$$ = (selector) => document.querySelectorAll(selector);
         const themeButton = document.createElement("a");
         themeButton.className = "nav-icon dark-mode-btn";
+        themeButton.style.display = "none";
         _$("#sub-nav").append(themeButton);
         const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
         function setTheme(config) {
-          const isAuto = config === "auto";
-          const isDark = config === "true" || isAuto && osMode;
-          document.documentElement.setAttribute("data-theme", isDark ? "dark" : null);
-          localStorage.setItem("dark_mode", config);
-          themeButton.id = `nav-${config === "true" ? "moon" : config === "false" ? "sun" : "circle-half-stroke"}-btn`;
+          const isDark = true;
+          document.documentElement.setAttribute("data-theme", "dark");
           document.body.dispatchEvent(
-            new CustomEvent(`${isDark ? "dark" : "light"}-theme-set`)
+            new CustomEvent("dark-theme-set")
           );
         }
-        const savedMode = localStorage.getItem("dark_mode") || document.documentElement.getAttribute("data-theme-mode") || "auto";
-        setTheme(savedMode);
-        themeButton.addEventListener(
-          "click",
-          throttle(() => {
-            const modes = ["auto", "false", "true"];
-            const nextMode = modes[(modes.indexOf(localStorage.getItem("dark_mode")) + 1) % 3];
-            setTheme(nextMode);
-          }, 1e3)
-        );
+        setTheme("true");
         let oldScrollTop = 0;
         document.addEventListener("scroll", () => {
           let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
