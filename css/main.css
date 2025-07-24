@@ -3688,3 +3688,9 @@ mjx-container::-webkit-scrollbar {
   height: 2px;
   background: var(--red-1);
 }
+
+[data-theme="dark"] img,
+[data-theme="dark"] figure img {
+  filter: brightness(1.1) contrast(1.1) !important;
+  opacity: 1 !important;
+}
