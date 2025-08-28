@@ -2606,7 +2606,10 @@ Task-29-08-2025
 <p>Khi ta chạy script trên với argument &ndash;chain nhận đầu vào 1 payload, ví dụ như <code>&lt;?php phpinfo(); ?&gt;</code></p>
 </li>
 <li>
-<p>Payload sẽ được base64_encode và truyền vào hàm generate_filter_chain, PD9waHAgcGhwaW5mbygpOyA/Pg là định dạng base64_encode của <code>&lt;?php phpinfo(); ?&gt;</code></p>
+<p>Payload sẽ được base64_encode và truyền vào hàm generate_filter_chain</p>
+</li>
+<li>
+<p>Nó duyệt qua từng kí tự của chuỗi base64 tương ứng với conversions rồi đưa vào php://filter</p>
 </li>
 <li>
 <p>php://filter/{filters}/resource={file_to_use}</p>
@@ -2621,7 +2624,7 @@ Task-29-08-2025
 </ul>
 <p><img src="/images/fancy3.png" alt="Alt text"></p>
 <ul>
-<li>Ta thấy f lại được chèn lên đầu, vậy thì ta có thể tạo bất cứ thứ gì ta muốn vào php:// kể cả <code>&lt;?php phpinfo(); ?&gt;</code></li>
+<li>Ta thấy f lại được chèn lên đầu, vậy thì ta có thể tạo bất cứ thứ gì ta muốn vào php://temp kể cả <code>&lt;?php phpinfo(); ?&gt;</code></li>
 </ul>
 <p><img src="/images/fancy4.png" alt="Alt text"></p>
 <ul>
