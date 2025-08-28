@@ -2390,6 +2390,9 @@ Task-29-08-2025
 <li>
 <p>Nếu $filePath = &ldquo;php://filter/&rdquo;, PHP sẽ không tìm file thật, mà dùng stream filter chain để biến đổi nội dung.</p>
 </li>
+<li>
+<p>Kỹ thuật LFI2RCE via PHP Filters sẽ cho phép chúng ta đọc 1 tệp trống hoặc không có tệp nào cả và vẫn đưa nội dung vào include</p>
+</li>
 </ul>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -2625,7 +2628,30 @@ Task-29-08-2025
 </span></span><span style="display:flex;"><span>    main<span style="color:#eceff4">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+</div><ul>
+<li>
+<p>Khi ta chạy script trên với argument &ndash;chain nhận đầu vào 1 payload, ví dụ như <code>&lt;?php phpinfo(); ?&gt;</code></p>
+</li>
+<li>
+<p>Payload sẽ được base64_encode và truyền vào hàm generate_filter_chain, PD9waHAgcGhwaW5mbygpOyA/Pg là định dạng base64_encode của <code>&lt;?php phpinfo(); ?&gt;</code></p>
+</li>
+<li>
+<p>php://filter/{filters}/resource={file_to_use}</p>
+</li>
+<li>
+<p>Biến filter nhận vào ba filter đầu (convert.iconv.UTF8.CSISO2022KR | convert.base64-encode | convert.iconv.UTF8.UTF7) đóng vai trò chuẩn hóa dữ liệu đầu vào (tạo base64 rác) trước khi đi vào các filter chuyển đổi, giải mã chính</p>
+</li>
+</ul>
+<p><img src="/images/fancy2.png" alt="Alt text"></p>
+<ul>
+<li>Vậy nếu tiếp theo ta thử nối vào tiếp 1 kí tự trên conversions, chẳng hạn như &lsquo;f&rsquo;: &lsquo;convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213&rsquo;, thì sao</li>
+</ul>
+<p><img src="/images/fancy3.png" alt="Alt text"></p>
+<ul>
+<li>Ta thấy f lại được chèn lên đầu, vậy thì ta có thể tạo bất cứ thứ gì ta muốn vào php:// kể cả <code>&lt;?php phpinfo(); ?&gt;</code></li>
+</ul>
+<p><img src="/images/fancy4.png" alt="Alt text"></p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 2
@@ -2748,10 +2774,10 @@ Task-29-08-2025
           >ntrg0wb</a>
       </div><div>
         <span class="icon-brush"
-          >&nbsp;6.3k</span
+          >&nbsp;6.4k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;00:30</span>
+        <span class="icon-coffee">&nbsp;00:31</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
