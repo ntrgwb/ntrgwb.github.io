@@ -42,6 +42,26 @@
     
 
     <item>
+      <title>Task</title>
+      <link>http://localhost:1313/post/task/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/task/</guid>
+      <description>
+        <![CDATA[<h1>Task</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <p>Task</p>
+        
+        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
+      </description>
+      
+        <category>WRITEUP</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>Nahamcon 2025</title>
       <link>http://localhost:1313/post/nahamcon_ctf_2025/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>

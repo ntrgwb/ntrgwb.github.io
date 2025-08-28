@@ -12,12 +12,52 @@
     
     <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
     
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Jul 2025 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/categories/writeup/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>HCMUS CTF 2025</title>
+      <link>http://localhost:1313/post/hcmus_ctf_2025/</link>
+      <pubDate>Thu, 24 Jul 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/hcmus_ctf_2025/</guid>
+      <description>
+        <![CDATA[<h1>HCMUS CTF 2025</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <p>HCMUS CTF 2025</p>
+        
+        <hr><p>Published on 2025-07-24 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-07-24</p>]]>
+      </description>
+      
+        <category>WRITEUP</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Task</title>
+      <link>http://localhost:1313/post/task/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/task/</guid>
+      <description>
+        <![CDATA[<h1>Task</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <p>Task</p>
+        
+        <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
+      </description>
+      
+        <category>WRITEUP</category>
+      
+    </item>
     
     
 
