@@ -12,12 +12,30 @@
     
     <copyright>All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!</copyright>
     
-    <lastBuildDate>Thu, 24 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>React2Shell (CVE-2025-55182)</title>
+      <link>http://localhost:1313/post/cve-2025-55182/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (Ngo Truong)</author>
+      <guid>http://localhost:1313/post/cve-2025-55182/</guid>
+      <description>
+        <![CDATA[<h1>React2Shell (CVE-2025-55182)</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        
+          <p>CVE-2025-55182</p>
+        
+        <hr><p>Published on 2025-12-21 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-12-21</p>]]>
+      </description>
+      
+    </item>
     
     
 
