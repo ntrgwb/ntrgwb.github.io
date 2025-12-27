@@ -22,15 +22,15 @@
     
 
     <item>
-      <title>Task</title>
+      <title>Sekai CTF 2025</title>
       <link>http://localhost:1313/post/task/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 &#43;0000</pubDate>
       <author>xxx@example.com (Ngo Truong)</author>
       <guid>http://localhost:1313/post/task/</guid>
       <description>
-        <![CDATA[<h1>Task</h1><p>Author: Ngo Truong(xxx@example.com)</p>
+        <![CDATA[<h1>Sekai CTF 2025</h1><p>Author: Ngo Truong(xxx@example.com)</p>
         
-          <p>Task</p>
+          <p>Sekai CTF 2025</p>
         
         <hr><p>Published on 2025-06-25 at <a href='http://localhost:1313/'>I have not failed, I just found 10,000 ways that won't work.</a>, last modified on 2025-06-25</p>]]>
       </description>
